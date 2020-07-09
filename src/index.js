@@ -7,17 +7,24 @@ class App extends React.Component {
 
     // Initialize State in the Constructor
     this.state = {
-      lat: 30,
-      lon: 40,
+      lat: null,
+      lon: null,
     };
+
+    // Geolocation API - Ask users to provide their location to web application
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // Update state with setState
+        this.setState({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        });
+      },
+      (err) => console.log(err)
+    );
   }
 
   render() {
-    // Geolocation API - Ask users to provide their location to web application
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => console.log(position),
-      (err) => console.log(err)
-    );
     return (
       <div>
         Latitude: {this.state.lat} Longitude: {this.state.lon}
