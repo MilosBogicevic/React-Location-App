@@ -2,28 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  // Initialize state
+  state = { lat: null, lon: null, errorMessage: "" };
 
-    // Initialize State in the Constructor
-    this.state = {
-      lat: null,
-      lon: null,
-      errorMessage: "",
-    };
-
+  componentDidMount() {
     // Geolocation API - Ask users to provide their location to web application
     window.navigator.geolocation.getCurrentPosition(
-      (position) => {
+      (position) =>
         // Update state with setState
         this.setState({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
-        });
-      },
-      (err) => {
-        this.setState({ errorMessage: err.message });
-      }
+        }),
+      // Update state with error message
+      (err) => this.setState({ errorMessage: err.message })
     );
   }
 
