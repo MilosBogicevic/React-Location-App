@@ -9,6 +9,7 @@ class App extends React.Component {
     this.state = {
       lat: null,
       lon: null,
+      errorMessage: "",
     };
 
     // Geolocation API - Ask users to provide their location to web application
@@ -20,14 +21,18 @@ class App extends React.Component {
           lon: position.coords.longitude,
         });
       },
-      (err) => console.log(err)
+      (err) => {
+        this.setState({ errorMessage: err.message });
+      }
     );
   }
 
   render() {
     return (
       <div>
-        Latitude: {this.state.lat} Longitude: {this.state.lon}
+        Latitude: {this.state.lat} <br />
+        Longitude: {this.state.lon} <br />
+        Error: {this.state.errorMessage}
       </div>
     );
   }
