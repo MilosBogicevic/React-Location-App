@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Spinner from "./components/Spinner";
 
 class App extends React.Component {
   // Initialize state
@@ -30,8 +31,7 @@ class App extends React.Component {
         </div>
       );
     }
-
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 }
 
