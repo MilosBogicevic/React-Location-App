@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import styles from "./index.css";
 import Spinner from "./components/Spinner";
 
 class App extends React.Component {
@@ -26,7 +27,7 @@ class App extends React.Component {
     }
     if (!this.state.errorMessage && this.state.lat) {
       return (
-        <div>
+        <div style={styles.div}>
           Latitude: {this.state.lat} <br /> Longitude: {this.state.lon}
         </div>
       );
